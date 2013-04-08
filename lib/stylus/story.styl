@@ -1,0 +1,96 @@
+brandOrange = #EA5F25
+brandGray = #8A8A8A
+lightGray = #949494
+lightestGray = #F1F1F1
+
+drop-shadow(n)
+  -moz-box-shadow n
+  -webkit-box-shadow n
+  box-shadow n
+  
+bottom-border()
+  border-bottom: 2px dotted black
+
+.article
+  body
+    font-family: Helvetica
+
+  h1, h2, h3, p
+    color:brandGray
+    font-family: Helvetica
+
+  h1
+    margin-bottom: 0
+
+  p
+    margin-top: 0
+
+.article-title
+  bottom-border()
+  h1
+    color: black
+  .credit
+    color: lightGray
+  .date
+    font-style: italic
+
+.content
+  width: 100%
+  height: 85%
+  position: relative
+
+.sidebar, .illustration
+  display: inline-block
+  vertical-align: top
+  height: 100%
+  
+.sidebar
+  width: 30%
+  position: relative
+  
+.chapter
+  border-bottom: 2px dotted brandGray
+  padding: 1em
+  background-color: lightestGray
+  h1
+    margin: 0
+  p
+    font-size: 12px
+  &.active
+    background-color: white
+    h1
+      color: brandOrange
+      
+.arrows
+  position: absolute
+  padding: 1em
+  right: 0
+  width: 80px
+  
+.illustration
+  width: 70%
+  position: relative
+  drop-shadow(-10px -5px 14px -9px brandGray)
+  
+#vis
+  width: 100%
+  height: 400px
+  margin: 1em
+  
+.extended-content
+  width: 100%
+  height: 200px
+  margin: 1em
+  
+#data_grid
+  width: 100%
+  
+.footer
+  width: 100%
+  border-top: 2px dotted black
+  padding: 1em 1em 0 1em
+  background-image: linear-gradient(bottom, rgb(255,255,255) 0%, rgb(235,235,235) 51%)
+  background-image: -o-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(235,235,235) 51%)
+  background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(235,235,235) 51%)
+  background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(235,235,235) 51%)
+  background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(235,235,235) 51%)
