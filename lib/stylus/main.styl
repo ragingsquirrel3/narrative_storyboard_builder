@@ -1,0 +1,53 @@
+@import 'article'
+@import 'data_grid'
+
+brandOrange = #EA5F25
+brandGray = #8A8A8A
+lightGray = #949494
+lightestGray = #F1F1F1
+
+drop-shadow(n)
+  -moz-box-shadow n
+  -webkit-box-shadow n
+  box-shadow n
+  
+border-radius(n)
+  -moz-border-radius: n
+  border-radius: n
+  
+bottom-border()
+  border-bottom: 2px dotted black
+  
+body
+  font-family: Helvetica
+  margin: 0
+  font-size: 12px
+
+h1, h2, h3, p
+  color:brandGray
+  font-family: Helvetica
+  
+h1
+  margin-bottom: 0
+
+p
+  margin-top: 0
+  
+#main
+  margin: 0 auto
+  min-width: 600px
+  max-width: 1200px
+  width: 75%
+  height: 100%
+
+.header
+  width: 75%
+  background-color: white
+  position: fixed
+  z-index: 1
+  top: 0
+  h1
+    font-family: Avenir
+    color: lightGray
+  .brand
+    color: brandOrange

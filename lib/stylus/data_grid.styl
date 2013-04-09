@@ -1,0 +1,58 @@
+.data-grid
+  width: 100%
+  position: relative
+  table
+    border-collapse: collapse
+    width: 100%
+  th
+    border-bottom: 3px solid black
+    vertical-align: bottom
+    text-align: left
+  td
+    border-bottom: 1px dotted darkGray
+    text-align: left
+  .title
+    width: 80%
+    display: inline-block
+  .sorters
+    width: 20%
+    display: inline-block
+    .sort
+      sprite()
+      background-position-y: -91px;
+      background-position-x: -53px;
+      width: 8px
+      height: 7px
+      &.ascending
+        background-position-y: -99px;
+  .sort
+    font-size: 10px
+    cursor: pointer
+    display: block
+  
+  .paginator
+    position: relative
+    padding-bottom: 3em
+    padding-top: 1em
+    a
+      color: black
+      text-decoration: none
+      &.active
+        color: brandOrange
+        text-decoration: underline
+    ul
+      position: absolute
+      right: 0
+      top: 1em
+      margin: 0
+      li
+        display: inline
+        margin-right: 0.5em
+        padding-right: 0.5em
+        border-right: 1px solid black
+      li:last-child
+        border: none
+        margin: 0
+        padding: 0
+        a
+          color: brandOrange

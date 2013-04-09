@@ -1,12 +1,9 @@
-$( ->
-  window.storyView = new StoryboardBuilder
-)
-
 class StoryboardBuilder extends Backbone.View
   el: '.article'
   storyLength: null
   
   events:
+    "click .show-data": "showData"
     "click .prev": (e) -> 
       e.preventDefault()
       @.previous()
@@ -16,13 +13,11 @@ class StoryboardBuilder extends Backbone.View
   
   initialize: (options) ->
     @render()
-    # grid = new data_grid.DataGrid("data_grid")
      
     d3.json("../data/story.json", (storyJson) =>
       d3.csv("../data/ma.csv", (csv) =>
         @data = csv
         @buildStory(storyJson)
-        # grid.show(csv)
       )
     )
     
@@ -68,6 +63,20 @@ class StoryboardBuilder extends Backbone.View
     for key, value of @story.scenes
       @$('.chapters').append "<div class='chapter #{key}'><h1>#{i + 1}</h1><p>#{value.content}</p></div>"
       i++
+    
+    # subscribe to first and last scenes to disable/renable buttons
+    @story.subscribe('scene0:enter', =>
+      @$('.prev').addClass('disabled')
+    )
+    @story.subscribe('scene0:exit', =>
+      @$('.prev').removeClass('disabled')
+    )
+    @story.subscribe("scene#{@storyLength - 1}:enter", =>
+      @$('.next').addClass('disabled')
+    )
+    @story.subscribe("scene#{@storyLength - 1}:exit", =>
+      @$('.next').removeClass('disabled')
+    )
     @story.start()
     
   next: ->
@@ -77,8 +86,9 @@ class StoryboardBuilder extends Backbone.View
     
   previous: ->
     i = @story.scene().toString().substring(@story.scene().toString().length - 1, @story.scene().toString().length)
-    if i < 1
-      i = 0
-    else
-      i--
+    i-- unless i < 1
     @story.to("scene#{i}")
+    
+  showData: (e) ->
+    e.preventDefault()
+    @grid = new DataGrid data: @data

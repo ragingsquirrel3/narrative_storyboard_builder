@@ -1,0 +1,23 @@
+table.table.table-striped
+  thead
+    tr
+      - for(i = 0; i < Object.keys(data[0]).length - 1; i++)
+        th
+          .title= Object.keys(data[0])[i]
+          .sorters
+            a.sort.ascending(data-key="#{Object.keys(data[0])[i]}")
+            a.sort.descending(data-key="#{Object.keys(data[0])[i]}")
+  tbody
+    - for(j = 0; j < data.length - 1; j++)
+      tr
+        - for(k = 0; k < Object.keys(data[0]).length - 1; k++)
+          td= data[j][Object.keys(data[0])[k]]
+
+.paginator
+  span.source SOURCE: Bloomberg Mergers & Acquisitions
+  ul
+    - for(i = 0; i < paginateLength - 1; i++)
+      li
+        a.to-page(href='#', data-offset="#{i}", class="page-#{i}")= i + 1
+    li
+      a.data-download(href='#') Download the Data
